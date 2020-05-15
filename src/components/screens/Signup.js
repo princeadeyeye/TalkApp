@@ -59,6 +59,7 @@ export default class Signup extends Component {
               photoURL: '',
               statusMsg: this.state.statusMsg,
             });
+            Alert.alert(getString('SUCCESS'), 'SUCCESSFULL SIGNED UP');
           } catch (err) {
             this.setState({ isRegistering: false });
             Alert.alert(getString('ERROR'), err.message);
@@ -97,14 +98,14 @@ export default class Signup extends Component {
             <Input
               style={{ marginTop: 8 * ratio }}
               txtLabel={getString('EMAIL')}
-              txtHint={ getString('EMAIL') }
+              txtHint='user@gmail.com'
               txt={ this.state.email }
               onTextChanged={ (text) => this.onTextChanged('EMAIL', text)}
             />
             <Input
               style={{ marginTop: 24 * ratio }}
               txtLabel={ getString('PASSWORD') }
-              txtHint={ getString('PASSWORD') }
+              txtHint='password'
               txt={ this.state.pw }
               onTextChanged={ (text) => this.onTextChanged('PW', text)}
               isPassword={ true }
@@ -112,14 +113,14 @@ export default class Signup extends Component {
             <Input
               style={{ marginTop: 24 * ratio }}
               txtLabel={getString('NAME')}
-              txtHint={ getString('NAME') }
+              txtHint='ADEYEYE MUIZ OLAYINKA'
               txt={ this.state.displayName }
               onTextChanged={ (text) => this.onTextChanged('NAME', text)}
             />
             <Input
               style={{ marginTop: 24 * ratio }}
-              txtLabel={getString('STATUS_MSG')}
-              txtHint={ getString('STATUS_MSG') }
+              txtLabel={getString('STATUS')}
+              txtHint=' MARRIED'
               txt={ this.state.statusMsg }
               onTextChanged={ (text) => this.onTextChanged('STATUS_MSG', text)}
             />
