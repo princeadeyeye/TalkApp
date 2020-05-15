@@ -34,6 +34,7 @@ export default class Login extends Component {
           isLoggingIn: false,
           email: '',
           pw: '',
+          error: ''
         };
       }
 
@@ -63,9 +64,10 @@ export default class Login extends Component {
           try {
             const userData = await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.pw);
             console.log(userData);
+            this.setState({ isLoggingIn: false, error: ''})
           } catch (err) {
             Alert.alert(getString('ERROR'), err.message);
-            this.setState({ isLoggingIn: false });
+            this.setState({ isLoggingIn: false, error: 'Auth failed' });
           }
         });
       }
@@ -80,6 +82,7 @@ export default class Login extends Component {
                 <Text style={styles.iconTxt}>{getString('HELLO')}.</Text>
               </View>
               <View style={styles.wrapper}>
+              <Text style={styles.errorStyle}>{this.state.error}</Text>
                 <Input
                   style={ styles.txtInput }
                   // txtLabel={ getString('EMAIL') }
@@ -224,5 +227,10 @@ const styles = StyleSheet.create({
       fontSize: 12 * ratio,
       color: colors.cloudyBlue,
     },
-  });
+    errorStyle: {
+      fontSize: 20,
+      alignSelf: 'center',
+      color: 'red'
+   }
+});
   

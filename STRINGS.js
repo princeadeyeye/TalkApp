@@ -13,7 +13,7 @@ export const strings = {
     FORGOT_PW: 'Forgot password?',
     FIND_PW: 'FIND PASSWORD',
     NAME: 'NAME',
-    STATUS_MSG: 'Status message',
+    STATUS: 'Status',
     REGISTER: 'REGISTER',
     SEND_LINK: 'Send Link',
     FRIEND: 'Friend',
