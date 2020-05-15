@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 import LinearGradient from 'react-native-linear-gradient';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   ActivityIndicator,
   TouchableOpacity,
@@ -9,15 +11,15 @@ import {
   Text,
   View,
   ViewStyle,
+  ViewPropTypes,
   ImageSourcePropType,
 } from 'react-native';
 
-import { IC_MASK } from '@utils/Icons';
-import { ratio, colors } from '@utils/Styles';
+import { IC_MASK } from '../utils/Icons';
+import { ratio, colors } from '../utils/Styles';
 import Modal from 'react-native-modalbox';
-import { getString } from '@STRINGS';
+import { getString } from '../../../STRINGS';
 
-import appStore from '@stores/appStore';
 
 const styles = StyleSheet.create({
   modal: {
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
 //   onChat?: () => void;
 // }
 
-class ShaProfileModaled extends Component{
+class ProfileModal extends Component{
   static propTypes = {
     showAddBtn: PropTypes.bool,
     isAdding: PropTypes.bool,
@@ -303,4 +305,4 @@ class ShaProfileModaled extends Component{
   }
 }
 
-export default ProfileModal;
+export  {ProfileModal};

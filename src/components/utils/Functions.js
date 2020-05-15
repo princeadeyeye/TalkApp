@@ -1,6 +1,6 @@
 import { Animated } from 'react-native';
 
-export const animateRotateLoop = (spinValue, duration?: number) => {
+export const animateRotateLoop = (spinValue, duration) => {
   if (!duration) {
     duration = 2000;
   }

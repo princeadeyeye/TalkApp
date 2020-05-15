@@ -4,13 +4,15 @@ import {
   Platform,
   StatusBarStyle, 
 } from 'react-native';
-import { colors } from '@utils/Styles';
+import { colors } from '../utils/Styles';
+import PropTypes from 'prop-types';
+
 
 // interface IProps {
 //   isDarkContent: boolean;
 // }
 
-class StatusBar extends Component {
+class Bar extends Component {
 
   static propTypes = {
     isDarkContent: PropTypes.bool
@@ -34,4 +36,4 @@ class StatusBar extends Component {
   }
 }
 
-export default StatusBar;
+export  {Bar};

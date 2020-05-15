@@ -1,5 +1,6 @@
 import { Dimensions, Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
+import PropTypes from 'prop-types'
 
 const { width , height } = Dimensions.get('window');
 let calRatio = width <= height ? 16 * (width / height) : 16 * (height / width);
@@ -25,16 +26,25 @@ export const ratio = calRatio / (360 / 9);
 console.log(`ratio: ${ratio}`);
 export const statusBarHeight = getStatusBarHeight(true); // false to get android height.
 
-interface Icolors {
-  dodgerBlue: string;
-  dusk: string;
-  blueyGray: string;
-  cloudyBlue: string;
-  paleGray: string;
-  darkBlue: string;
-}
+// interface Icolors {
+//   dodgerBlue: string;
+//   dusk: string;
+//   blueyGray: string;
+//   cloudyBlue: string;
+//   paleGray: string;
+//   darkBlue: string;
+// }
 
-export const colors: Icolors = {
+// colors.propTypes = {
+//   dodgerBlue: PropTypes.string,
+//   dusk: PropTypes.string,
+//   blueyGray: PropTypes.string,
+//   cloudyBlue: PropTypes.string,
+//   paleGray: PropTypes.string,
+//   darkBlue: PropTypes.string,
+// }
+
+export const colors = {
   dodgerBlue: 'rgb(58,139,255)',
   dusk: 'rgb(65,77,107)',
   blueyGray: 'rgb(134,154,183)',
@@ -42,3 +52,5 @@ export const colors: Icolors = {
   paleGray: 'rgb(233,237,244)',
   darkBlue: 'rgb(30, 80, 180)',
 };
+
+console.log(colors.dusk)

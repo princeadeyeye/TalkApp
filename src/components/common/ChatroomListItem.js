@@ -1,5 +1,7 @@
 import moment from 'moment';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
   ActivityIndicator,
   StyleSheet,
@@ -12,8 +14,8 @@ import {
   ViewPropTypes,
 } from 'react-native';
 
-import { IC_MASK } from '@utils/Icons';
-import { ratio, colors, screenWidth } from '@utils/Styles';
+import { IC_MASK } from '../utils/Icons';
+import { ratio, colors, screenWidth } from '../utils/Styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -152,4 +154,4 @@ class ChatroomListItem extends Component {
   }
 }
 
-export default ChatroomListItem;
+export  {ChatroomListItem};

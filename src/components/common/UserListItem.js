@@ -10,9 +10,11 @@ import {
   ImageSourcePropType,
   ViewPropTypes,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
-import { IC_MASK } from '@utils/Icons';
-import { ratio, colors, screenWidth } from '@utils/Styles';
+
+import { IC_MASK } from '../utils/Icons';
+import { ratio, colors, screenWidth } from '../utils/Styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -73,7 +75,7 @@ class UserListItem extends Component {
       statusMsg: PropTypes.string
     }),
     onPress: () => {},
-    onLongPress?: () => {},
+    onLongPress: () => {},
   }
    static defaultProps= {
     style: styles.wrapper,
@@ -108,4 +110,4 @@ class UserListItem extends Component {
   }
 }
 
-export default UserListItem;
+export  {UserListItem};

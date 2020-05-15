@@ -68,32 +68,55 @@ const styles = StyleSheet.create({
 //   activeOpacity?: number;
 // }
 
-Button.propTypes = {
-  isLoading: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  onPress: PropTypes.func,
-  indicatorColor: PropTypes.string,
-  activeOpacity: PropTypes.number,
-  style: ViewPropTypes.style,
-  disabledStyle: ViewPropTypes.style,
-  textStyle: ViewPropTypes.style,
-  imgLeftStyle: ViewPropTypes.style,
-  imgLeftSrc: Image.propTypes.source
-}
+// Button.propTypes = {
+//   isLoading: PropTypes.bool,
+//   isDisabled: PropTypes.bool,
+//   onPress: PropTypes.func,
+//   indicatorColor: PropTypes.string,
+//   activeOpacity: PropTypes.number,
+//   style: ViewPropTypes.style,
+//   disabledStyle: ViewPropTypes.style,
+//   textStyle: ViewPropTypes.style,
+//   imgLeftStyle: ViewPropTypes.style,
+//   imgLeftSrc: Image.propTypes.source
+// }
 
-Button.defaultProps = {
-  isLoading: false,
-  isDisabled: false,
-  onPress = () => {},
-  indicatorColor: 'white',
-  activeOpacity: 0.5,
-  style: styles.btn,
-  disabledStyle: styles.btnDisabled,
-  textStyle: styles.txt,
-  imgLeftStyle: styles.imgLeft,
-}
+// Button.defaultProps = {
+//   isLoading: false,
+//   isDisabled: false,
+//   onPress : () => {},
+//   indicatorColor: 'white',
+//   activeOpacity: 0.5,
+//   style: styles.btn,
+//   disabledStyle: styles.btnDisabled,
+//   textStyle: styles.txt,
+//   imgLeftStyle: styles.imgLeft,
+// }
 
 class Button extends Component {
+  static propTypes = {
+    isLoading: PropTypes.bool,
+    isDisabled: PropTypes.bool,
+    onPress: PropTypes.func,
+    indicatorColor: PropTypes.string,
+    activeOpacity: PropTypes.number,
+    style: ViewPropTypes.style,
+    disabledStyle: ViewPropTypes.style,
+    textStyle: PropTypes.object,
+    imgLeftStyle: PropTypes.object,
+    imgLeftSrc: Image.propTypes.source
+  }
+  static defaultProps = {
+    isLoading: false,
+    isDisabled: false,
+    onPress : () => {},
+    indicatorColor: 'white',
+    activeOpacity: 0.5,
+    style: styles.btn,
+    disabledStyle: styles.btnDisabled,
+    textStyle: styles.txt,
+    imgLeftStyle: styles.imgLeft,
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -136,4 +159,4 @@ class Button extends Component {
   }
 }
 
-export default Button;
+export  {Button};

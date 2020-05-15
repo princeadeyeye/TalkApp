@@ -10,8 +10,8 @@ import {
   View,
 } from 'react-native';
 
-import { ratio, colors, screenWidth } from '@utils/Styles';
-import { IC_MASK } from '@utils/Icons';
+import { ratio, colors, screenWidth } from '../utils/Styles';
+import { IC_MASK } from '../utils/Icons';
 
 const styles = StyleSheet.create({
   wrapperPeer: {
@@ -116,4 +116,4 @@ class ChatListItem extends Component {
   }
 }
 
-export default ChatListItem;
+export  {ChatListItem};

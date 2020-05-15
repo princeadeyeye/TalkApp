@@ -11,8 +11,10 @@ import {
   TextInputProperties,
   ViewPropTypes,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
-import { ratio, colors } from '@utils/Styles';
+
+import { ratio, colors } from '../utils/Styles';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -77,12 +79,12 @@ const styles = StyleSheet.create({
 //   returnKeyType?: any;
 // }
 
-class TextInput extends Component {
+class Input extends Component {
   static propTypes = {
     style: ViewPropTypes.style,
-    labelStyle: ViewPropTypes.style,
-    labelStyleFocus: ViewPropTypes.style,
-    placeholderTextColor?: PropTypes.string,
+    labelStyle: PropTypes.object,
+    labelStyleFocus: PropTypes.object,
+    placeholderTextColor: PropTypes.string,
     inputStyle: ViewPropTypes.style,
     isPassword: PropTypes.bool,
     multiline: PropTypes.bool,
@@ -154,4 +156,4 @@ class TextInput extends Component {
   }
 }
 
-export default TextInput;
+export  {Input};

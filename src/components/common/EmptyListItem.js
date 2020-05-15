@@ -6,8 +6,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
-import { ratio, colors } from '@utils/Styles';
+import { ratio, colors } from '../utils/Styles';
 
 class EmptyListItem extends Component {
   constructor(props) {
@@ -41,4 +42,4 @@ class EmptyListItem extends Component {
   }
 }
 
-export default EmptyListItem;
+export  {EmptyListItem};

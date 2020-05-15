@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import firebase from 'firebase';
+import firebaseConfig from './config'
+import 'firebase/firestore';
+import Login from './src/components/screens/Login'
+
+!firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Login />
     </View>
   );
 }
@@ -12,8 +18,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column',
+    backgroundColor: 'transparent',
   },
 });

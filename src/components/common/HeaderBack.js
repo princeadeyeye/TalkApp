@@ -9,9 +9,12 @@ import {
   TextStyle,
   ImageStyle,
   ImageSourcePropType,
-} from 'react-native';
+  ViewPropTypes
 
-import { screenWidth, ratio, colors } from '@utils/Styles';
+} from 'react-native';
+import PropTypes from 'prop-types';
+
+import { screenWidth, ratio, colors } from '../utils/Styles';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -48,8 +51,8 @@ class HeaderBack extends Component{
     style: ViewPropTypes.style,
     txtStyle: ViewPropTypes.style,
     imgStyle: ViewPropTypes.style,
-    imgSrc?: Image.propTypes.source,
-    onBackPressed?: () => {},
+    imgSrc: Image.propTypes.source,
+    onBackPressed: () => {},
   }
    static defaultProps= {
     style: styles.wrapper,
@@ -78,5 +81,5 @@ class HeaderBack extends Component{
   }
 }
 
-export default HeaderBack;
+export  {HeaderBack};
 
