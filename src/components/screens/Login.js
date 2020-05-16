@@ -25,7 +25,7 @@ import { Button, Input, Bar } from '../common'
 
 export default class Login extends Component {
     static navigationOptions = {
-        header: null,
+        headerShown: false,
       };
 
       constructor(props) {
@@ -34,6 +34,7 @@ export default class Login extends Component {
           isLoggingIn: false,
           email: '',
           pw: '',
+          error: ''
         };
       }
 
@@ -51,7 +52,6 @@ export default class Login extends Component {
        goToSignup = () => {
         console.log('goToSignup');
         this.props.navigation.navigate('Signup');
-        // this.props.navigation.navigate('Signup');
       }
        goToForgotPw = () => {
         this.props.navigation.navigate('FindPw');
@@ -63,9 +63,10 @@ export default class Login extends Component {
           try {
             const userData = await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.pw);
             console.log(userData);
+            this.setState({ isLoggingIn: false, error: ''})
           } catch (err) {
             Alert.alert(getString('ERROR'), err.message);
-            this.setState({ isLoggingIn: false });
+            this.setState({ isLoggingIn: false, error: 'Auth failed' });
           }
         });
       }
@@ -80,6 +81,7 @@ export default class Login extends Component {
                 <Text style={styles.iconTxt}>{getString('HELLO')}.</Text>
               </View>
               <View style={styles.wrapper}>
+              <Text style={styles.errorStyle}>{this.state.error}</Text>
                 <Input
                   style={ styles.txtInput }
                   // txtLabel={ getString('EMAIL') }
@@ -113,7 +115,7 @@ export default class Login extends Component {
                   onPress={this.goToForgotPw}
                   style={styles.touchForgotPw}
                 >
-                  <Text style={styles.txtForgotPw}>{getString('FORGOT_PW')}</Text>
+                  <Text style={styles.txtForgotPw}>Forget password?</Text>
                 </TouchableOpacity>
                 <Text style={styles.txtCopyright}>Adeyeye Muiz</Text>
               </View>
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
     wrapper: {
       marginTop: 260 * ratio,
       width: '78%',
-      height: 300 * ratio,
+      height: 500 * ratio,
   
       flexDirection: 'column',
       alignItems: 'center',
@@ -212,7 +214,7 @@ const styles = StyleSheet.create({
       color: 'white',
     },
     touchForgotPw: {
-      marginTop: 20 * ratio,
+      marginTop: 10 * ratio,
     },
     txtForgotPw: {
       fontSize: 12 * ratio,
@@ -224,5 +226,10 @@ const styles = StyleSheet.create({
       fontSize: 12 * ratio,
       color: colors.cloudyBlue,
     },
-  });
+    errorStyle: {
+      fontSize: 20,
+      alignSelf: 'center',
+      color: 'red'
+   }
+});
   
