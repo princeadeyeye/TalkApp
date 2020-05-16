@@ -25,7 +25,7 @@ import { Button, Input, Bar } from '../common'
 
 export default class Login extends Component {
     static navigationOptions = {
-        header: null,
+        headerShown: false,
       };
 
       constructor(props) {
@@ -52,7 +52,6 @@ export default class Login extends Component {
        goToSignup = () => {
         console.log('goToSignup');
         this.props.navigation.navigate('Signup');
-        // this.props.navigation.navigate('Signup');
       }
        goToForgotPw = () => {
         this.props.navigation.navigate('FindPw');
@@ -116,7 +115,7 @@ export default class Login extends Component {
                   onPress={this.goToForgotPw}
                   style={styles.touchForgotPw}
                 >
-                  <Text style={styles.txtForgotPw}>{getString('FORGOT_PW')}</Text>
+                  <Text style={styles.txtForgotPw}>Forget password?</Text>
                 </TouchableOpacity>
                 <Text style={styles.txtCopyright}>Adeyeye Muiz</Text>
               </View>
@@ -158,7 +157,7 @@ const styles = StyleSheet.create({
     wrapper: {
       marginTop: 260 * ratio,
       width: '78%',
-      height: 300 * ratio,
+      height: 500 * ratio,
   
       flexDirection: 'column',
       alignItems: 'center',
@@ -215,7 +214,7 @@ const styles = StyleSheet.create({
       color: 'white',
     },
     touchForgotPw: {
-      marginTop: 20 * ratio,
+      marginTop: 10 * ratio,
     },
     txtForgotPw: {
       fontSize: 12 * ratio,
