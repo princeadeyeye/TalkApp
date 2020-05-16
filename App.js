@@ -13,8 +13,11 @@ import StackNavigator from './src/components/navigation/AuthStackNavigator'
 import MainTabNavigator from './src/components/navigation/MainTabNavigator'
 // import SwitchStackNavigator from './src/components/navigation/SwitchNavigation'
 import { NavigationContainer } from '@react-navigation/native';
+import ProfileUpdate from './src/components/screens/ProfileUpdate'
 import Friend from './src/components/screens/Friend'
 import Message from './src/components/screens/Message'
+import SearchUser from './src/components/screens/SearchUser'
+import Chat from './src/components/screens/Chat'
 
 
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
@@ -23,7 +26,7 @@ export default function App() {
   return (
     <View style={styles.container}>
     <NavigationContainer>
-      <MainTabNavigator />
+      <Chat />
     </NavigationContainer>
     </View>
   );

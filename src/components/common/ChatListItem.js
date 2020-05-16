@@ -1,4 +1,4 @@
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { Component } from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 class ChatListItem extends Component {
 
   static propTypes = {
-    item: PropTypes.string
+    item: PropTypes.any
     };
    static defaultProps = {
     item: ''
