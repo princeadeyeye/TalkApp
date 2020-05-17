@@ -34,46 +34,46 @@ export default class SearchUser extends Component {
       users: [],
     };
   }
-//   componentDidMount() {
-//     console.log('componentDidMount', 'SearchUser');
-//     /**
-//      * get all the users
-//      */
-//     if (USE_FIRESTORE) {
-//       firebase.firestore().collection('users')
-//       .orderBy('displayName', 'asc')
-//       .get().then((snapshots) => {
-//         const users = [];
-//         snapshots.forEach((doc) => {
-//           const user = doc.data();
-//           user.id = doc.id;
-//           if (user.email !== firebase.auth().currentUser.email) {
-//             users.push(user);
-//           }
-//         });
-//         this.setState({ users });
-//       });
-//       return;
-//     }
-//     firebase.database().ref('users')
-//     .orderByChild('displayName')
-//     .once('value')
-//     .then((snapshots) => {
-//       const users = [];
-//       snapshots.forEach((doc) => {
-//         const user = doc.val();
-//         user.id = doc.key;
-//         if (user.email !== firebase.auth().currentUser.email) {
-//           users.push(user);
-//         }
-//       });
-//       this.setState({ users });
-//     });
-//   }
+  componentDidMount() {
+    console.log('componentDidMount', 'SearchUser');
+    /**
+     * get all the users
+     */
+    if (USE_FIRESTORE) {
+      firebase.firestore().collection('users')
+      .orderBy('displayName', 'asc')
+      .get().then((snapshots) => {
+        const users = [];
+        snapshots.forEach((doc) => {
+          const user = doc.data();
+          user.id = doc.id;
+          if (user.email !== firebase.auth().currentUser.email) {
+            users.push(user);
+          }
+        });
+        this.setState({ users });
+      });
+      return;
+    }
+    firebase.database().ref('users')
+    .orderByChild('displayName')
+    .once('value')
+    .then((snapshots) => {
+      const users = [];
+      snapshots.forEach((doc) => {
+        const user = doc.val();
+        user.id = doc.key;
+        if (user.email !== firebase.auth().currentUser.email) {
+          users.push(user);
+        }
+      });
+      this.setState({ users });
+    });
+  }
 
-//   onScroll = (e) => {
-//     // console.log(e.nativeEvent.contentOffset.y);
-//   }
+  onScroll = (e) => {
+    // console.log(e.nativeEvent.contentOffset.y);
+  }
 
    renderItem = ({ item }) => {
     return (

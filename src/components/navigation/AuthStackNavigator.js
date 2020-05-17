@@ -1,14 +1,12 @@
 import { createStackNavigator } from 'react-navigation-stack'
 // import StackViewStyleInterpolator from 'react-navigation-stack/dist/views/StackView/StackViewStyleInterpolator';
-import {
-    
-    createAppContainer
-  } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 
 import Login from '../screens/Login'
 import Signup from '../screens/Signup'
 import FindPw from '../screens/FindPw'
 import NotFound from '../screens/NotFound'
+import { commonNavigationOptions } from '../navigation/MainStackNavigator'
 
 const StackNavigator = createStackNavigator(
     {
@@ -19,6 +17,7 @@ const StackNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Login',
+        navigationOptions: commonNavigationOptions,
     }
 )
 const AuthStackNavigator = createAppContainer(StackNavigator)

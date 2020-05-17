@@ -12,7 +12,7 @@ import {
     createAppContainer,
   } from 'react-navigation';
 
-  import LinearGradient from 'react-native-linear-gradient';
+  import { LinearGradient } from 'expo-linear-gradient';
   import { IC_MASK, IC_ADD } from '../utils/Icons'
 
   import Friend from '../screens/Friend'
@@ -61,15 +61,15 @@ import {
   export default MainTabNavigator;
   
   export const MainTabNavigationOptions = ({navigation}) => ({
-    title: 'Talk Talk',
-    headerLeft: 
+    title: 'The Talk',
+    headerLeft: () =>
       <TouchableOpacity
         activeOpacity={0.5}
         onPress={() => navigation.navigate('ProfileUpdate')}
       >
         <Image style={styles.imgHeaderLeft} source={IC_MASK}/>
       </TouchableOpacity>,
-    headerRight:
+    headerRight: () =>
       <TouchableOpacity
         activeOpacity={0.5}
         onPress={() => navigation.navigate('SearchUser')}
@@ -78,3 +78,32 @@ import {
       </TouchableOpacity>,
   });
   
+  const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    paddingTop: statusBarHeight, // false to get height of android too.
+  },
+  imgHeaderLeft: {
+    marginLeft: 20,
+    width: 28,
+    height: 28,
+    borderRadius: 14,
+    borderColor: 'white',
+    borderWidth: 1,
+  },
+  imgHeaderRight: {
+    width: 60,
+    height: 60,
+    tintColor: 'black',
+  },
+  txt: {
+    color: 'white',
+    fontSize: 15,
+  },
+  txtSub: {
+    color: 'white',
+    fontSize: 15,
+    fontWeight: '700', 
+  },
+});

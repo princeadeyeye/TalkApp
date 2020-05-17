@@ -33,35 +33,37 @@ export default class ProfileUpdate extends Component {
         };
       }
 
-    //   componentDidMount() {
-    //     console.log('componentDidMount', 'ProfileUpdate', firebase.auth().currentUser);
-    //     const userId = firebase.auth().currentUser.uid;
-    //     if (USE_FIRESTORE) {
-    //       firebase.firestore().collection('users').doc(userId).get().then((doc) => {
-    //         if (doc.exists) {
-    //           const user = doc.data();
-    //           console.log('user');
-    //           console.log(user);
-    //           this.setState({
-    //             displayName: user.displayName,
-    //             email: user.email,
-    //             statusMsg: user.statusMsg,
-    //             photoURL: user.photoURL,
-    //           });
-    //         }
-    //       });
-    //       return;
-    //     }
-    //     firebase.database().ref('users').child(`/${userId}`).once('value').then((snapshot) => {
-    //       const user = snapshot.val();
-    //       this.setState({
-    //         displayName: user.displayName,
-    //         email: user.email,
-    //         statusMsg: user.statusMsg,
-    //         photoURL: user.photoURL,
-    //       });
-    //     });
-    //   }
+      componentDidMount() {
+        console.log('componentDidMount', USE_FIRESTORE, 'ProfileUpdate', firebase.auth().currentUser);
+        const userId = firebase.auth().currentUser.uid;
+
+        if (USE_FIRESTORE) {
+          firebase.firestore().collection('users').doc(userId).get().then((doc) => {
+            console.log(doc.data, "docssssss")
+            if (doc) {
+              const user = doc.data();
+              console.log('user');
+              console.log(user);
+              this.setState({
+                displayName: user.displayName,
+                email: user.email,
+                statusMsg: user.statusMsg,
+                photoURL: user.photoURL,
+              });
+            }
+          });
+          return;
+        }
+        firebase.database().ref('users').child(`/${userId}`).once('value').then((snapshot) => {
+          const user = snapshot.val();
+          this.setState({
+            displayName: user.displayName,
+            email: user.email,
+            statusMsg: user.statusMsg,
+            photoURL: user.photoURL,
+          });
+        });
+      }
 
       onLogout = async () => {
         console.log('onLogout');
@@ -115,6 +117,7 @@ export default class ProfileUpdate extends Component {
       }
 
     render() {
+        console.log(this.state)
         return (
             <View style={styles.container}>
         <ScrollView

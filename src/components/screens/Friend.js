@@ -25,87 +25,87 @@ export default class Friend extends Component {
         };
       }
     
-      // componentDidMount() {
-      //   /**
-      //    * get all friends
-      //    */
-      //   const userData = firebase.auth().currentUser;
-      //   console.log(userData, "user data")
-      //   if (USE_FIRESTORE) {
-      //     firebase.firestore().collection('users')
-      //     .doc(`${userData.uid}`).collection('friends')
-      //     .onSnapshot((snapshots) => {
-      //       const friends = this.state.friends;
-      //       if (snapshots.size === 0) {
-      //         this.setState({ friends: [] });
-      //         return;
-      //       }
-      //       snapshots.docChanges().forEach((change) => {
-      //         let user = change.doc.data();
-      //         console.log('user', user);
-      //         user.friendId = change.doc.id;
-      //         firebase.firestore().collection('users').doc(user.id).onSnapshot((friendSnap) => {
-      //           if (change.type === 'added') {
-      //             user = { ...user, ...friendSnap.data() };
-      //             friends.push(user);
-      //             if (snapshots.size === friends.length) {
-      //               this.setState({ friends });
-      //               return;
-      //             }
-      //           }
+      componentDidMount() {
+        /**
+         * get all friends
+         */
+        const userData = firebase.auth().currentUser;
+        console.log(userData, "user data")
+        if (USE_FIRESTORE) {
+          firebase.firestore().collection('users')
+          .doc(`${userData.uid}`).collection('friends')
+          .onSnapshot((snapshots) => {
+            const friends = this.state.friends;
+            if (snapshots.size === 0) {
+              this.setState({ friends: [] });
+              return;
+            }
+            snapshots.docChanges().forEach((change) => {
+              let user = change.doc.data();
+              console.log('user', user);
+              user.friendId = change.doc.id;
+              firebase.firestore().collection('users').doc(user.id).onSnapshot((friendSnap) => {
+                if (change.type === 'added') {
+                  user = { ...user, ...friendSnap.data() };
+                  friends.push(user);
+                  if (snapshots.size === friends.length) {
+                    this.setState({ friends });
+                    return;
+                  }
+                }
     
-      //           if (change.type === 'removed') {
-      //             const index = this.state.friends.findIndex((el) => {
-      //               return el.friendId === user.friendId;
-      //             });
-      //             console.log(index);
-      //             this.setState({
-      //               friends: update(
-      //                 this.state.friends, {
-      //                   $splice: [ [ index, 1 ] ],
-      //                 },
-      //               ),
-      //             });
-      //           }
+                if (change.type === 'removed') {
+                  const index = this.state.friends.findIndex((el) => {
+                    return el.friendId === user.friendId;
+                  });
+                  console.log(index);
+                  this.setState({
+                    friends: update(
+                      this.state.friends, {
+                        $splice: [ [ index, 1 ] ],
+                      },
+                    ),
+                  });
+                }
     
-      //           // if (change.type === 'modified') {
-      //           //   const index = this.state.friends.findIndex((el) => {
-      //           //     return el.friendId === user.friendId;
-      //           //   });
-      //           //   this.setState({
-      //           //     friends: update(
-      //           //       this.state.friends, {
-      //           //         [index]: user,
-      //           //       },
-      //           //     ),
-      //           //   });
-      //           // }
-      //         });
-      //       });
-      //     });
-      //     return;
-      //   }
-      //   firebase.database().ref(`users/${userData.uid}`).child('friends')
-      //   .on('value', (snapshots) => {
-      //     const friends = [];
-      //     if (snapshots.numChildren() === 0) {
-      //       this.setState({ friends });
-      //       return;
-      //     }
-      //     snapshots.forEach((doc) => {
-      //       let user = doc.val();
-      //       user.friendId = doc.key;
-      //       firebase.database().ref(`users/${user.id}`)
-      //       .on('value', (friendSnap) => {
-      //         user = { ...user, ...friendSnap.val() };
-      //         friends.push(user);
-      //         if (snapshots.numChildren() === friends.length) {
-      //           this.setState({ friends });
-      //         }
-      //       });
-      //     });
-      //   });
-      // }
+                // if (change.type === 'modified') {
+                //   const index = this.state.friends.findIndex((el) => {
+                //     return el.friendId === user.friendId;
+                //   });
+                //   this.setState({
+                //     friends: update(
+                //       this.state.friends, {
+                //         [index]: user,
+                //       },
+                //     ),
+                //   });
+                // }
+              });
+            });
+          });
+          return;
+        }
+        firebase.database().ref(`users/${userData.uid}`).child('friends')
+        .on('value', (snapshots) => {
+          const friends = [];
+          if (snapshots.numChildren() === 0) {
+            this.setState({ friends });
+            return;
+          }
+          snapshots.forEach((doc) => {
+            let user = doc.val();
+            user.friendId = doc.key;
+            firebase.database().ref(`users/${user.id}`)
+            .on('value', (friendSnap) => {
+              user = { ...user, ...friendSnap.val() };
+              friends.push(user);
+              if (snapshots.numChildren() === friends.length) {
+                this.setState({ friends });
+              }
+            });
+          });
+        });
+      }
 
       renderItem = ({ item }) => {
         return (

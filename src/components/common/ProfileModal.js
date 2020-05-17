@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import LinearGradient from 'react-native-linear-gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
