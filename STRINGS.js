@@ -25,6 +25,7 @@ export const strings = {
     DELETE_FRIEND: 'DELETE',
     GO_CHAT: 'GO CHAT',
     SEARCH_USER: 'Search User',
+    SEARCH: 'Search',
     CHAT: 'CHAT',
     SEND: 'Send',
     WRITE_MESSAGE: 'Write message...',

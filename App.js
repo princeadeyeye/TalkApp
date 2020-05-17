@@ -18,6 +18,8 @@ import Friend from './src/components/screens/Friend'
 import Message from './src/components/screens/Message'
 import SearchUser from './src/components/screens/SearchUser'
 import Chat from './src/components/screens/Chat'
+import MainStackNavigator from './src/components/navigation/MainStackNavigator'
+import SwitchNavigator from './src/components/navigation/SwitchNavigation'
 
 
 !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
@@ -26,7 +28,7 @@ export default function App() {
   return (
     <View style={styles.container}>
     <NavigationContainer>
-      <Chat />
+      <SwitchNavigator />
     </NavigationContainer>
     </View>
   );
